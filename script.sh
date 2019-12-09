@@ -1,40 +1,33 @@
 #!/bin/bash
-function central(){
-           copia_bin
-           validacao_java
-           jar
-}
 
-function copia_bin(){
-           bin_jar=$(ls /usr/local/bin/  |  grep   minehash.jar)
-           grep_script=$(ls /usr/local/bin  |  grep script_instalacao)
-           if [ $bin_jar  -z  ]  2> /dev/null
-           then
-           sudo cp minehash.jar    /usr/local/bin  2> /dev/null
-           elif    [  $bin_script  -z  ]   2> /dev/null
-           then
-sudo java -jar /usr/local/bin/minehash.jar
+echo "A instalação de seu software de monitoração securIT começou..."
 
+cd ~
+
+mkdir securit
+
+cd securit
+
+cp $HOME/Área\ de\ Trabalho/securIT/Dev/securit.jar securit.jar
+
+chmod +x securit.jar
+
+which java
+
+echo "..."
+
+if [ $? = 0 ]
+	then echo "Prosseguindo a instalação"
+	else sudo add-apt-repository ppa:webupd8team/java
 fi
-}
-
-function validacao_java(){
-
-which java | grep �q  java  2> /dev/null
-
-if [  $? -eq  0  ]   
-	then echo �Instalando minehash�
-else
-	sudo apt-get install openjdk-8-jdk
-fi
-}
 
 
-function jar(){
-java -jar minehash.jar    2>/dev/null
-               if [  $?  -ne  0  ]
-	then 
-	sudo java -jar / usr/local/bin/minehash.jar
- fi
-} 
-central 
+echo java -jar $HOME/securit/securit.jar > securIT.txt
+
+chmod +x $HOME/securit/securit.jar
+
+sudo cp $HOME/securit/securit.jar /usr/local/bin/securit
+
+echo "..."
+
+echo "A instalação foi executada com sucesso. Apenas entre na pasta $HOME/securit e clique duas vezes no arquivo securit.jar"
